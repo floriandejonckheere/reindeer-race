@@ -41,4 +41,22 @@ group :development do
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+
+  # RSpec
+  gem "rspec"
+  gem "rspec-rails"
+
+  # Shoulda-matchers
+  gem "shoulda-matchers"
+
+  # Time behaviour
+  gem "timecop"
+
+  # Factory testing pattern
+  gem "factory_bot"
+  gem "factory_bot_rails"
+  gem "ffaker"
+
+  # Mock HTTP requests
+  gem "webmock"
 end
