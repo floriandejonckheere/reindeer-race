@@ -17,8 +17,8 @@ export default {
       reelActive: false,
       snowLandscapes: null,
       frameInterval: null,
-      frameTickTime: 15,
-      frameTickDistance: 5
+      frameTickTime: 2,
+      frameTickDistance: 1
     }
   },
 
@@ -47,7 +47,7 @@ export default {
       const newMargin =  oldMargin - this.frameTickDistance
       snowLandscape.style.setProperty('margin-left', `${newMargin}px`)
       const amountSnowLandscapeVisible =  parseInt(snowLandscape.width) + parseInt(snowLandscape.offsetLeft)
-      if (amountSnowLandscapeVisible === 0) snowLandscape.style.setProperty('margin-left', '0px')
+      if (amountSnowLandscapeVisible <= 0) snowLandscape.style.setProperty('margin-left', '0px')
     },
   },
   watch: {
