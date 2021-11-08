@@ -3,7 +3,13 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs"
-import "channels"
+import Vue from 'vue'
+import App from '../../views/root'
+import '../../stylesheets/index.scss'
 
-Rails.start()
+document.addEventListener('DOMContentLoaded', () => {
+    new Vue({
+        el: '#app',
+        render(h) { return h(App) }
+    })
+})
