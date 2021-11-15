@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_212858) do
+ActiveRecord::Schema.define(version: 2021_11_15_183910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "games", force: :cascade do |t|
+  create_table "games", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "status", null: false
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 2021_11_15_212858) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "scores", force: :cascade do |t|
-    t.integer "users_id", null: false
-    t.integer "games_id", null: false
+  create_table "scores", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "users_id", null: false
+    t.uuid "games_id", null: false
     t.string "colour", null: false
     t.datetime "score"
     t.integer "taps", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_212858) do
     t.index ["users_id"], name: "index_scores_on_users_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
