@@ -29,3 +29,5 @@
 .cache
 
 spec/examples.txt
+
+.irb_history
