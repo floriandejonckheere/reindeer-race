@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :user do
-    name { FFaker::Internet.username }
+    name { FFaker::Internet.user_name }
   end
 end
