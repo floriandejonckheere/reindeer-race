@@ -2,6 +2,8 @@
 
 class User < ApplicationRecord
   has_many :scores
+  has_many :games,
+           through: :scores
 
   validates :name,
             presence: true
