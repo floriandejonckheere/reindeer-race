@@ -1,0 +1,24 @@
+##
+# Providers
+#
+hcloud_token = ""
+gandi_key = ""
+
+##
+# Services
+#
+passwd = ""
+
+##
+# DNS
+#
+domain_contact = {
+  country = ""
+  email = ""
+  family_name = ""
+  given_name = ""
+  phone = ""
+  street_addr = ""
+  city = ""
+  zip = ""
+}
