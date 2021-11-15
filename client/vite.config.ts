@@ -6,5 +6,10 @@ export default defineConfig({
   server: {
     port: 3001,
   },
-  plugins: [Vue(), Pages()],
+  plugins: [
+    Vue({
+      refTransform: true,
+    }),
+    Pages(),
+  ],
 });
