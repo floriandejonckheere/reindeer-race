@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
+class Game < ApplicationRecord
   has_many: :score
 
-  validates :name,
+  validates :status,
             presence: true
 end
