@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Game < ApplicationRecord
-  SCORES = %w(waiting ongoing finished).freeze
+  STATUSES = %w(waiting ongoing finished).freeze
+  COLOURS = %w(red blue green purple yellow orange pink gray).freeze
+  MAX_NUMBER_PLAYERS = 8
 
   has_many :scores
   has_many :users,
@@ -9,5 +11,5 @@ class Game < ApplicationRecord
 
   validates :status,
             presence: true,
-            inclusion: { in: SCORES }
+            inclusion: { in: STATUSES }
 end

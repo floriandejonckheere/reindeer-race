@@ -6,5 +6,6 @@ class User < ApplicationRecord
            through: :scores
 
   validates :name,
-            presence: true
+            presence: true,
+            uniqueness: true
 end
