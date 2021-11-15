@@ -1,4 +1,6 @@
-class CreateScore < ActiveRecord::Migration[6.1]
+# frozen_string_literal: true
+
+class CreateScores < ActiveRecord::Migration[6.1]
   def change
     create_table :scores do |t|
       t.references :users, null: false, type: :integer, index: true, foreign_key: { on_delete: :cascade }
