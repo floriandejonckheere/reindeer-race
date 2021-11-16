@@ -57,5 +57,5 @@ group :development, :test do
   gem "webmock"
 
   # Annotate models
-  gem "annotate", github: "Vasfed/annotate_models", branch: "rails6_warning"
+  # gem "annotate", github: "Vasfed/annotate_models", branch: "rails6_warning"
 end
