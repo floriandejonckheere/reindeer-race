@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_183910) do
   create_table "games", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string "status", null: false
+    t.string "status", default: "waiting", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_183910) do
     t.uuid "users_id", null: false
     t.uuid "games_id", null: false
     t.string "colour", null: false
-    t.datetime "score"
-    t.integer "taps", null: false
+    t.integer "score"
+    t.integer "taps"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["games_id"], name: "index_scores_on_games_id"

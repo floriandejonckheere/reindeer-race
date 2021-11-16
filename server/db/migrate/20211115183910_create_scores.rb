@@ -6,9 +6,9 @@ class CreateScores < ActiveRecord::Migration[6.1]
       t.references :users, null: false, type: :uuid, index: true, foreign_key: { on_delete: :cascade }
       t.references :games, null: false, type: :uuid, index: true, foreign_key: { on_delete: :cascade }
 
-      t.string :colour, null: false  
-      t.datetime :score
-      t.integer :taps, null: false
+      t.string :colour, null: false
+      t.integer :score
+      t.integer :taps
   
       t.timestamps
     end
