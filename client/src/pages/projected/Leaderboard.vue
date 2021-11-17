@@ -7,12 +7,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import ScoreBoard from '../../components/ScoreBoard.vue';
-const gameId = 1
+<script setup>
+import ScoreBoard from "@/components/ScoreBoard.vue";
+const gameId = 1;
 </script>
 
-<style>
+<style scoped>
 h1 {
   text-align: center;
   color: red;

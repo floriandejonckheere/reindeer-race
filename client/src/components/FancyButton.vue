@@ -14,11 +14,11 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
+<script setup>
+//
 </script>
 
-<style>
+<style scoped>
 #top-oval {
   width: 200px;
   height: 70px;

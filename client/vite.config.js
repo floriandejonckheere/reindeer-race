@@ -6,6 +6,7 @@ import Pages from "vite-plugin-pages";
 export default defineConfig({
   server: {
     port: 3001,
+    open: true,
   },
   resolve: {
     alias: {
