@@ -3,12 +3,11 @@
 class CreateScores < ActiveRecord::Migration[6.1]
   def change
     create_table :scores, id: :uuid do |t|
-      t.references :users, null: false, type: :uuid, index: true, foreign_key: { on_delete: :cascade }
-      t.references :games, null: false, type: :uuid, index: true, foreign_key: { on_delete: :cascade }
+      t.references :user, null: false, type: :uuid, index: true, foreign_key: { on_delete: :cascade }
+      t.references :game, null: false, type: :uuid, index: true, foreign_key: { on_delete: :cascade }
 
       t.string :colour, null: false
-      t.integer :score
-      t.integer :taps
+      t.integer :score, null: false, default: 0
 
       t.timestamps
     end

@@ -25,15 +25,14 @@ ActiveRecord::Schema.define(version: 2021_11_22_173602) do
   end
 
   create_table "scores", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "users_id", null: false
-    t.uuid "games_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "game_id", null: false
     t.string "colour", null: false
-    t.integer "score"
-    t.integer "taps"
+    t.integer "score", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["games_id"], name: "index_scores_on_games_id"
-    t.index ["users_id"], name: "index_scores_on_users_id"
+    t.index ["game_id"], name: "index_scores_on_game_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -43,6 +42,6 @@ ActiveRecord::Schema.define(version: 2021_11_22_173602) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
-  add_foreign_key "scores", "games", column: "games_id", on_delete: :cascade
-  add_foreign_key "scores", "users", column: "users_id", on_delete: :cascade
+  add_foreign_key "scores", "games", on_delete: :cascade
+  add_foreign_key "scores", "users", on_delete: :cascade
 end
