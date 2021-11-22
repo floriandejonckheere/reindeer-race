@@ -2,13 +2,15 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :game, controller: :games, only: [:index] do
-    member do
-      post :user
+  scope path: "api", format: false do
+    resources :game, controller: :games, only: [:index] do
+      member do
+        post :user
+      end
     end
-  end
 
-  resources :leaderbord, controller: :leaderbord, only: [:index]
+    resources :leaderbord, controller: :leaderbord, only: [:index]
+  end
 end
 
 # == Route Map
