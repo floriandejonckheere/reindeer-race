@@ -14,6 +14,10 @@ class Game < ApplicationRecord
   validates :status,
             presence: true,
             inclusion: { in: STATUSES }
+
+  validates :status,
+            uniqueness: true,
+            if: ->(game) { game.status == "ongoing" }
 end
 
 # == Schema Information
@@ -26,4 +30,8 @@ end
 #  status     :string           default("waiting"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_games_on_status  (status) UNIQUE WHERE ((status)::text = 'ongoing'::text)
 #
