@@ -27,6 +27,12 @@ Lint/AssignmentInCondition:
 Lint/SafeNavigationWithEmpty:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
 Rails:
   Enabled: true
 

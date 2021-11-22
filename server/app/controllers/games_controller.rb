@@ -21,11 +21,11 @@ class GamesController < ApplicationController
       used_colours = Score.where(game_id: waiting_loby.id).pluck(:colour)
       unused_colours Game::COLOURS - used_colours
 
-      used_colours_hash = used_colours.each_with_object({}) do |colour, _hash|
+      _used_colours_hash = used_colours.each_with_object({}) do |colour, _hash|
         hsh[colour] = true
       end
 
-      unused_colours_hash = unused_colours.each_with_object({}) do |colour, _hash|
+      _unused_colours_hash = unused_colours.each_with_object({}) do |colour, _hash|
         hsh[colour] = false
       end
 

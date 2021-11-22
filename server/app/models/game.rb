@@ -5,7 +5,9 @@ class Game < ApplicationRecord
   COLOURS = %w(red blue green purple yellow orange pink gray).freeze
   MAX_NUMBER_PLAYERS = 8
 
-  has_many :scores
+  has_many :scores,
+           dependent: :destroy
+
   has_many :users,
            through: :scores
 
