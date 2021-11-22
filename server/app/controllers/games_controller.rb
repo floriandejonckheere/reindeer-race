@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
     else
       used_colours = Score.where(game_id: waiting_loby.id).pluck(:colour)
-      unused_colours Game::COLOURS - used_colours
+      unused_colours = Game::COLOURS - used_colours
 
       used_colours_hash = used_colours.each_with_object({}) do |colour, hash|
         hash[colour] = true
@@ -47,20 +47,6 @@ class GamesController < ApplicationController
     }
 
     render json: payload
-  end
-
-  def user
-    ActiveRecord::Base.transaction do
-      user = User.create!(name: create_user_params.fetch(:name))
-
-      Score.create!({
-                      user: user,
-                      game: game,
-                      colour: create_user_params.fetch(:colour),
-                    })
-    end
-
-    render json: user, status: :created
   end
 
   private
