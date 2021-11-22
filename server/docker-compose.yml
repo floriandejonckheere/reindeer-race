@@ -5,7 +5,6 @@ x-app: &app
   volumes:
     - .:/app/:cached
     - bundle:/usr/local/bundle/
-    - npm:/app/node_modules/
   depends_on:
     - postgres
     - redis
@@ -36,4 +35,3 @@ volumes:
   postgres:
   redis:
   bundle:
-  npm:
