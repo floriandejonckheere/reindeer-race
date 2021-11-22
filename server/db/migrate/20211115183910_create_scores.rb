@@ -9,7 +9,7 @@ class CreateScores < ActiveRecord::Migration[6.1]
       t.string :colour, null: false
       t.integer :score
       t.integer :taps
-  
+
       t.timestamps
     end
   end

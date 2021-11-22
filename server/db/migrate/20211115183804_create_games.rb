@@ -6,8 +6,8 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.datetime :start_date
       t.datetime :end_date
       t.string :status, null: false, default: "waiting"
-  
+
       t.timestamps
     end
-  end  
+  end
 end
