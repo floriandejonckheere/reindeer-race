@@ -10,6 +10,10 @@ class User < ApplicationRecord
   validates :name,
             presence: true,
             uniqueness: true
+
+  def stats
+    @stats ||= Stats.new(self)
+  end
 end
 
 # == Schema Information
