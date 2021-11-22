@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class GamesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
+
   def index
     # will test and clean this up in the next hackaton
-    waiting_lobby_games = Score
+    waiting_loby = Score
       .joins(:game)
       .where(game: { status: :waiting })
-      # .group_by(:game_id)
-
-    waiting_loby = waiting_lobby_games.find { |game| game.size < 8 }
+      .find { |game| game.users.size < 8 }
 
     if waiting_loby.nil?
       waiting_loby = Game.create!
@@ -40,13 +41,22 @@ class GamesController < ApplicationController
     render json: payload
   end
 
+  def show
+    payload = {
+      raindeers: game.users,
+      status: game.status
+    }
+
+    render json: payload
+  end
+
   def user
     ActiveRecord::Base.transaction do
-      user = User.create!(create_user_params.fetch(:name))
+      user = User.create!(name: create_user_params.fetch(:name))
 
       Score.create!({
                       user: user,
-                      game: Game.find(params[:game_id]),
+                      game: game,
                       colour: create_user_params.fetch(:colour),
                     })
     end
@@ -62,5 +72,9 @@ class GamesController < ApplicationController
         :name,
         :colour,
       )
+  end
+
+  def game
+    @game ||= Game.find(params[:id])
   end
 end
