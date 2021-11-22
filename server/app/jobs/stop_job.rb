@@ -7,6 +7,8 @@ class StopJob < ApplicationJob
     # Return if no ongoing game found
     return unless game
 
+    logger.info "Stopping game #{game.id} with #{game.users.count} players"
+
     game.transaction do
       # Stop game
       game.update!(status: :finished, end_date: DateTime.current)

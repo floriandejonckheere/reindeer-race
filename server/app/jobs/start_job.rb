@@ -7,6 +7,8 @@ class StartJob < ApplicationJob
     # Return if no lobby with players found
     return unless game
 
+    logger.info "Starting game #{game.id} with #{game.users.count} players"
+
     game.transaction do
       # Start game
       game.update!(status: :ongoing, start_date: DateTime.current)
