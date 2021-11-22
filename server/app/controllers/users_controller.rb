@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
+    user = nil
+
     ActiveRecord::Base.transaction do
       user = User.create!(name: create_user_params.fetch(:name))
 
