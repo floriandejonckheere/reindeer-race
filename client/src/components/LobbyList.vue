@@ -2,61 +2,71 @@
 <table>
   <header>
     <th></th>
-    <th>NickName</th>
-    <th>Time</th>
+    <th>Players</th>
+    <th>Color</th>
   </header>
   <body>
-    <tr v-for="(score, idx) in scores" :key="idx">
+    <tr v-for="(reindeer1, idx) in reindeer" :key="idx">
       <td>{{ idx }}</td>
-      <td>{{ score.username }}</td>
-      <td>{{ score.score }}</td>
+      <td>{{ reindeer1.username }}</td>
+      <td>{{ reindeer1.color }}</td>
     </tr>
   </body>
 </table>
+<body></body>
 </template>
 
 <script setup>
 import { defineProps, onMounted } from "vue";
 const props = defineProps({
-  type: String,
-  id: Number,
+  id: Number
 });
-let scores = $ref([]);
+
+let reindeer = $ref([]);
 
 onMounted(() => {
-  getScores();
+  getGame();
 });
 
-async function getScores() {
+async function getGame() {
   // const endpoint = import.meta.env.VITE_SERVER_URL;
-  // const better_endpoint = props.type === "gameResult" ? `${endpoint}/game/${props.id}/score` : `${endpoint}/leaderboard`
+  // const better_endpoint = `${endpoint}/game/${props.id}/`
   // const response = await fetch(better_endpoint)
   // const data = await response.json()
   const data = {
-    scores: [
+    reindeer: [
       {
         username: "Jasper",
-        score: 23456,
+        position: 0,
+        color: "green",
       },
       {
         username: "Karl-Erik",
-        score: 23456,
+        score: 0,
+        color: "red"
       },
       {
         username: "Pieter",
-        score: 23456,
+        score: 0,
+        color: "blue",
       },
       {
         username: "Florian",
-        score: 23456,
+        score: 0,
+        color: "black",
       },
       {
         username: "Yannick",
-        score: 23456,
+        score: 0,
+        color: "purple",
       },
     ],
+    progress: 0,
+    time_elapsed: 0,
+    state: "waiting"
   };
 
-  scores = data.scores;
+  reindeer = data.reindeer;
 }
+
 </script>
