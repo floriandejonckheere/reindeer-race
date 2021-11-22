@@ -1,0 +1,4 @@
+:schedule:
+  start:
+    cron: '0 * * * * *' # Run every minute, on second 0
+    class: Start
