@@ -5,7 +5,7 @@ class StartJob < ApplicationJob
 
   def perform(*_args)
     # Return if no lobby with players found
-    return unless game
+    return unless game || game.users.empty?
 
     logger.info "Starting game #{game.id} with #{game.users.count} players"
 
