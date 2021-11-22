@@ -14,7 +14,7 @@ class StopJob < ApplicationJob
       game.update!(status: :finished, end_date: DateTime.current)
 
       # Save player stats
-      game.scores.each { |score| score.update!(score: user.stats.dashes) }
+      game.scores.each { |score| score.update!(score: score.user.stats.dashes) }
     end
   end
 
