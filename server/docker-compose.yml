@@ -31,6 +31,10 @@ services:
     ports:
       - "3000:3000"
 
+  sidekiq:
+    <<: *app
+    command: bundle exec sidekiq -C config/sidekiq.yml
+
 volumes:
   postgres:
   redis:
