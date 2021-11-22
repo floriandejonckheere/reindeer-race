@@ -6,32 +6,32 @@ class GamesController < ApplicationController
     waiting_lobby_games = Score
       .joins(:game)
       .where(game: { status: :waiting })
-      .group_by(:game_id)
+      # .group_by(:game_id)
 
     waiting_loby = waiting_lobby_games.find { |game| game.size < 8 }
 
     if waiting_loby.nil?
       waiting_loby = Game.create!
 
-      colours = Game::COLOURS.each_with_object({}) do |colour, _hash|
-        hsh[colour] = true
+      colours = Game::COLOURS.each_with_object({}) do |colour, hash|
+        hash[colour] = true
       end
 
     else
       used_colours = Score.where(game_id: waiting_loby.id).pluck(:colour)
       unused_colours Game::COLOURS - used_colours
 
-      _used_colours_hash = used_colours.each_with_object({}) do |colour, _hash|
-        hsh[colour] = true
+      used_colours_hash = used_colours.each_with_object({}) do |colour, hash|
+        hash[colour] = true
       end
 
-      _unused_colours_hash = unused_colours.each_with_object({}) do |colour, _hash|
-        hsh[colour] = false
+      unused_colours_hash = unused_colours.each_with_object({}) do |colour, hash|
+        hash[colour] = false
       end
 
-      colours = used_colours.merge(unused_colours)
-
+      colours = used_colours_hash.merge(unused_colours_hash)
     end
+
     payload = {
       colours: colours,
       game_id: waiting_loby.id,
