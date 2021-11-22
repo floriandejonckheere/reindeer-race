@@ -8,3 +8,9 @@ Rails.application.routes.draw do
     end
   end
 end
+
+# == Route Map
+#
+#     Prefix Verb URI Pattern              Controller#Action
+#  user_game POST /game/:id/user(.:format) game#user
+# game_index GET  /game(.:format)          game#index

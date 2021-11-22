@@ -15,3 +15,15 @@ class Game < ApplicationRecord
             presence: true,
             inclusion: { in: STATUSES }
 end
+
+# == Schema Information
+#
+# Table name: games
+#
+#  id         :uuid             not null, primary key
+#  end_date   :datetime
+#  start_date :datetime
+#  status     :string           default("waiting"), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
