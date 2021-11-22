@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope path: "api", format: false do
     resources :game, controller: :games, only: [:index, :show] do
-      resources :user, controller: :users, only: [:create]
+      resources :user, controller: :users, only: [:create] do
+        resources :dash, controller: :dash, only: [:create]
+      end
 
       resources :score, controller: :scores, only: [:index]
     end

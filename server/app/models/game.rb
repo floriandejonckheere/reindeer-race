@@ -2,7 +2,7 @@
 
 class Game < ApplicationRecord
   STATUSES = %w(waiting ongoing finished).freeze
-  COLOURS = %w(red blue green purple yellow orange pink gray).freeze
+  COLOURS = %w(red blue green purple yellow orange pink grey).freeze
   MAX_NUMBER_PLAYERS = 8
 
   has_many :scores,

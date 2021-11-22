@@ -3,7 +3,6 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-
   def index
     # will test and clean this up in the next hackaton
     waiting_loby = Score
