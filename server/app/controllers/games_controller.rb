@@ -5,9 +5,8 @@ class GamesController < ApplicationController
 
   def index
     # will test and clean this up in the next hackaton
-    waiting_loby = Score
-      .joins(:game)
-      .where(game: { status: :waiting })
+    waiting_loby = Game
+      .where(status: :waiting )
       .find { |game| game.users.size < 8 }
 
     if waiting_loby.nil?
