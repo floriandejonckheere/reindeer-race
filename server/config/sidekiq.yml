@@ -1,8 +1,8 @@
 :schedule:
   start:
     cron: '0 * * * * *' # Run every minute, on second 0
-    class: Start
+    class: StartJob
 
   stop:
     cron: '40 * * * * *' # Run every minute, on second 40
-    class: Stop
+    class: StopJob
