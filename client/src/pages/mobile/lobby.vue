@@ -7,7 +7,10 @@
 
 <script setup>
 import LobbyList from "@/components/LobbyList.vue";
-const gameId = 1;
+import { useRoute } from 'vue-router'
+
+const router = useRoute()
+const gameId = router.query.game_id;
 </script>
 
 <style scoped>

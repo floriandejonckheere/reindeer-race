@@ -11,7 +11,7 @@
       <div v-for="(colour_active, colour_name) in colours">
         <input v-if="colour_active" type="radio" id="radio-button" name="radioFruit" value="apple" />
         <label
-          v-if="colour_active"
+          v-if="!colour_active"
           v-on:click="radio_button_clicked(colour_name)"
           v-bind:class="colour_name"
           for="radio-button"
@@ -25,7 +25,11 @@
   </form>
 </template>
 
-<script setup lang="ts">import { onBeforeUnmount, onMounted } from '@vue/runtime-core'
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 let name = $ref('')
 let error = $ref('')
@@ -75,6 +79,8 @@ async function join_button() {
     },
     body: JSON.stringify(post_data)
   })
+
+  router.push({ name: 'mobile-lobby', query: { game_id } })
 
 }
 

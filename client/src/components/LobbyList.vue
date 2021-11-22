@@ -7,8 +7,8 @@
   </header>
   <body>
     <tr v-for="(reindeer1, idx) in reindeer" :key="idx">
-      <td>{{ idx }}</td>
-      <td>{{ reindeer1.username }}</td>
+      <td>{{ idx + 1 }}</td>
+      <td>{{ reindeer1.name }}</td>
       <td>{{ reindeer1.color }}</td>
     </tr>
   </body>
@@ -29,44 +29,44 @@ onMounted(() => {
 });
 
 async function getGame() {
-  // const endpoint = import.meta.env.VITE_SERVER_URL;
-  // const better_endpoint = `${endpoint}/game/${props.id}/`
-  // const response = await fetch(better_endpoint)
-  // const data = await response.json()
-  const data = {
-    reindeer: [
-      {
-        username: "Jasper",
-        position: 0,
-        color: "green",
-      },
-      {
-        username: "Karl-Erik",
-        score: 0,
-        color: "red"
-      },
-      {
-        username: "Pieter",
-        score: 0,
-        color: "blue",
-      },
-      {
-        username: "Florian",
-        score: 0,
-        color: "black",
-      },
-      {
-        username: "Yannick",
-        score: 0,
-        color: "purple",
-      },
-    ],
-    progress: 0,
-    time_elapsed: 0,
-    state: "waiting"
-  };
+  const endpoint = import.meta.env.VITE_SERVER_URL;
+  const better_endpoint = `${endpoint}/game/${props.id}/`
+  const response = await fetch(better_endpoint)
+  const data = await response.json()
+  // const data = {
+  //   reindeer: [
+  //     {
+  //       username: "Jasper",
+  //       position: 0,
+  //       color: "green",
+  //     },
+  //     {
+  //       username: "Karl-Erik",
+  //       score: 0,
+  //       color: "red"
+  //     },
+  //     {
+  //       username: "Pieter",
+  //       score: 0,
+  //       color: "blue",
+  //     },
+  //     {
+  //       username: "Florian",
+  //       score: 0,
+  //       color: "black",
+  //     },
+  //     {
+  //       username: "Yannick",
+  //       score: 0,
+  //       color: "purple",
+  //     },
+  //   ],
+  //   progress: 0,
+  //   time_elapsed: 0,
+  //   state: "waiting"
+  // };
 
-  reindeer = data.reindeer;
+  reindeer = data.raindeers;
 }
 
 </script>
