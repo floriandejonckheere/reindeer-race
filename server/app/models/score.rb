@@ -6,6 +6,9 @@ class Score < ApplicationRecord
 
   validates :colour,
             presence: true
+
+  validates :user_id,
+            uniqueness: { scope: :game_id }
 end
 
 # == Schema Information
@@ -22,8 +25,9 @@ end
 #
 # Indexes
 #
-#  index_scores_on_game_id  (game_id)
-#  index_scores_on_user_id  (user_id)
+#  index_scores_on_game_id              (game_id)
+#  index_scores_on_user_id              (user_id)
+#  index_scores_on_user_id_and_game_id  (user_id,game_id) UNIQUE
 #
 # Foreign Keys
 #
